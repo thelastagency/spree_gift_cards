@@ -11,4 +11,6 @@ en:
     cant_activate: "You can't activate this gift card, b/c it was already activated."
     register_error: "Couldn't register gift card"
     successfully_updated: "Gift card was successfully updated!"
+    by_email: "Send the lucky someone their Gift Card by email"
+    by_print: "Show me a neat page I can print and give to them physically"
 

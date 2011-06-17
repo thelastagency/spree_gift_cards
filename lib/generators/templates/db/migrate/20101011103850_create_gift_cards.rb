@@ -9,6 +9,7 @@ class CreateGiftCards < ActiveRecord::Migration
       t.text :note
       t.string :token, :null => false
       t.boolean :is_received, :default => false, :null => false
+      t.string :delivery_method, :default => 'email'
       t.datetime :sent_at
       t.timestamps
     end

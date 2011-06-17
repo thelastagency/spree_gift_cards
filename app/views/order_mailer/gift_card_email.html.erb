@@ -1,0 +1,10 @@
+<p>Hi <%= @gift_card.name %>,</p>
+
+<p>
+  <%= simple_format @gift_card.note %>
+</p>
+
+<p>
+To use <%= number_to_currency @gift_card.price %> Gift Card
+follow <%= link_to 'this link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url]) %>.
+</p>

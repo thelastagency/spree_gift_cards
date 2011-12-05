@@ -18,10 +18,6 @@
     <%= f.label :note, t("note") %><br />
     <%= f.text_area :note, :rows => 10 %>
   <% end %> 
-  <%= f.field_container :delivery_method do %>
-    <%= f.radio_button :delivery_method, 'email', :class => 'delivery_methods required' %> <%= t('gift_card_messages.by_email') %><br/>
-    <%= f.radio_button :delivery_method, 'print', :class => 'delivery_methods required' %> <%= t('gift_card_messages.by_print') %>
-  <% end %> 
   <button type='submit' class='large primary'>
     <%= image_tag('/images/add-to-cart.png') + ' ' + t('add_to_cart') %>
   </button>

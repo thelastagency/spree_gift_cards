@@ -4,7 +4,7 @@ class GiftCard < ActiveRecord::Base
   belongs_to :user
   validates :email, :presence => true
   validates :name, :presence => true
-  validates :variant, :presence => true
+  validates :variant, :presence => true, :message => "Price option must be selected"
 
   before_create :generate_token
 

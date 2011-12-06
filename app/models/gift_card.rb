@@ -4,7 +4,7 @@ class GiftCard < ActiveRecord::Base
   belongs_to :user
   validates :email, :presence => true
   validates :name, :presence => true
-  validates :variant_id, :pressence => true
+  validates :variant, :presence => true
 
   before_create :generate_token
 

@@ -7,7 +7,5 @@ class SpreeGiftCardsHooks < Spree::ThemeSupport::HookListener
     )
   end
   
-  replace :cart_item_description, "orders/line_item_description"
-  
   insert_after :account_my_orders, :partial => 'users/gift_cards'
 end

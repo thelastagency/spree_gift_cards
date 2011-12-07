@@ -2,6 +2,7 @@
 <%= render "shared/error_messages", :target => @gift_card %>
 <%= form_for @gift_card do |f| %>
   <p>
+    <%= f.label :variant_id, t("amount") %> <span class="required">*</span><br />
     <% @gift_card_variants.each do |card| %>
       <%= f.radio_button :variant_id, card.id %><%= number_to_currency(card.price) %>
     <% end %>

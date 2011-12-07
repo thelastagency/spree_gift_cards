@@ -4,7 +4,7 @@ en:
   gift_card: "Gift card"
   gift_cards: "Gift cards"
   is_gift_card: "is gift card"
-  recipient_name: "Recipient name"
+  recipient_name: "Recipient's name"
   recipient_email: "Recipient's Email"
   recipient_note: "Note to Recipient"
   gift_card_messages:

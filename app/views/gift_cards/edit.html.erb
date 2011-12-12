@@ -1,6 +1,10 @@
 <h1><%= t(:gift_card) %></h1>
 <%= render "shared/error_messages", :target => @gift_card %>
 <%= form_for @gift_card do |f| %>
+  <%= f.field_container :sender_name do %>
+    <%= f.label :sender_name, t("sender_name") %> <span class="required">*</span><br />
+    <%= f.text_field :sender_name %>
+  <% end %>
   <%= f.field_container :email do %>
     <%= f.label :email, t("recipient_email") %> <span class="required">*</span><br />
     <%= f.text_field :email %>

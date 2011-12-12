@@ -1,10 +1,19 @@
-<p>Hi <%= @gift_card.name %>,</p>
+<p>Hi <%= @gift_card.name %>!</p>
+
+<p>
+<%= @gift_card.sender_name %> gave you a <%= number_to_currency @gift_card.price %> gift certificate to www.twigtale.com!  
+</p> 
 
 <p>
   <%= simple_format @gift_card.note %>
 </p>
 
+<p>Twigtale allows you to create a personalized storybook for kids ages 0-5 using your photos and your words! We offer fun books, learning books, gift books and books to help with challenging childhood transitions. We provide the editable template and you make it your own masterpiece!</p>
+
 <p>
-To use <%= number_to_currency @gift_card.price %> Gift Card
-follow <%= link_to 'this link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url]) %>.
+To use the Gift Card follow <%= (link_to 'this link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url])) || 'this link'%>.
 </p>
+
+<p>Enjoy!</p>
+
+<p>The Twigtale Team</p>

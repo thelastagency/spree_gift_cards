@@ -3,6 +3,7 @@ class GiftCardsController < Spree::BaseController
   def new
     find_gift_card_variants
     @gift_card = GiftCard.new
+    @gift_card.sender_name = [current_user.fname || "", " ", current_user.lname || ""].join
   end
 
   def create
@@ -11,7 +12,7 @@ class GiftCardsController < Spree::BaseController
       @order = current_order(true)
       line_item = @order.add_variant(@gift_card.variant, 1)
       @gift_card.line_item = line_item
-      @gift_card.user = current_user
+      @gift_card.sender = current_user
       @gift_card.save
       redirect_to cart_path
     else
@@ -57,6 +58,12 @@ class GiftCardsController < Spree::BaseController
       flash[:notice] = t("gift_card_messages.authorization_required")
     end
     redirect_to root_url
+  end
+  
+  def preview
+    
+    @gift_card = GiftCard.new(:email => params[:email], :name => params[:name], :sender_name => params[:sender_name], :variant_id => params[:variant_id])
+    
   end
 
   private

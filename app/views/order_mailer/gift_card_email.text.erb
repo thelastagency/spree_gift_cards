@@ -1,15 +1,8 @@
-Hi <%= @gift_card.name %>,
-
-<%= @gift_card.note %>
-
-To use <%= number_to_currency @gift_card.price %>  Gift Card 
-follow this link: <%= activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url]) %>.
-
 Hi <%= @gift_card.name %>!
 
 <%= @gift_card.sender_name %> gave you a <%= number_to_currency @gift_card.price %> gift certificate to www.twigtale.com!  
 
-<%= simple_format @gift_card.note %>
+<%= @gift_card.note %>
 
 Twigtale allows you to create a personalized storybook for kids ages 0-5 using your photos and your words! We offer fun books, learning books, gift books and books to help with challenging childhood transitions. We provide the editable template and you make it your own masterpiece!
 

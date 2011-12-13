@@ -1,4 +1,5 @@
-<% if @user.my_gift_cards.present? %>
+<% @gcs = GiftCard.users_cards(@user.id) %>
+<% if @gcs.present? %>
 <h2><%= t("gift_cards") %></h2>
 
 <table class="order-summary" width="545">
@@ -12,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @user.my_gift_cards.each do |card| %>
+  <% @gcs.each do |card| %>
     <tr class="<%= cycle('even', 'odd') %>">
       <td><%= t(:gift_card)%> <%= number_to_currency(card.price) %></td>
       <td><%= card.email %></td>

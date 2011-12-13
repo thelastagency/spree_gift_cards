@@ -12,8 +12,10 @@ class GiftCard < ActiveRecord::Base
 
   attr_accessible :name, :email, :sender_name, :note, :variant_id, :delivery_method
 
+  scope :users_cards, lambda{|user_id| where("sender_id = ? OR recipient_id = ?", user_id, user_id).order('created_at desc')  }
+
   def price
-    self.line_item ? self.line_item.price * self.line_item.quantity : self.variant.price
+    (self.line_item ? self.line_item.price * self.line_item.quantity : self.variant.price) || 0.0
   end
 
   def register(user)

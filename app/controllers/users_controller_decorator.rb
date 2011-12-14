@@ -7,10 +7,10 @@ UsersController.class_eval do
     return if session[:gift_card].nil?
     @gift_card = GiftCard.find_by_token(session[:gift_card])
     if @gift_card.register(current_user)
-      flash[:notice] = t("gift_card_messages.activated")
+      flash[:notice] = t("spree_gift_card.messages.activated")
       session[:gift_card] = nil
     else
-      flash[:error] = t("gift_card_messages.register_error")
+      flash[:error] = t("spree_gift_card.messages.register_error")
     end
   end
 end

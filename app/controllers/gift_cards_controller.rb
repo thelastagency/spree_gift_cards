@@ -23,16 +23,16 @@ class GiftCardsController < Spree::BaseController
 
   def edit
     @gift_card = GiftCard.find(params[:id])
-    access_forbidden unless @gift_card && @gift_card.user == current_user
+    access_forbidden unless @gift_card && @gift_card.sender == current_user
   end
 
   def update
     @gift_card = GiftCard.find(params[:id])
-    access_forbidden unless @gift_card && @gift_card.user == current_user && !@gift_card.is_received?
+    access_forbidden unless @gift_card && @gift_card.sender == current_user && !@gift_card.is_received?
     params[:gift_card].delete(:variant_id)
     if @gift_card.update_attributes(params[:gift_card])
-      OrderMailer.gift_card_email(@gift_card).deliver if @gift_card.sent_at.present?
-      flash[:notice] = t("gift_card_messages.successfully_updated")
+      OrderMailer.gift_card_email(@gift_card, @gift_card.line_item.order).deliver if @gift_card.sent_at.present?
+      flash[:notice] = t("spree_gift_card.messages.successfully_updated")
       redirect_to account_url
     else
       render :action => :edit
@@ -49,13 +49,13 @@ class GiftCardsController < Spree::BaseController
 
     if current_user && !current_user.anonymous?
       if @gift_card.register(current_user)
-        flash[:notice] = t("gift_card_messages.activated")
+        flash[:notice] = t("spree_gift_card.messages.activated")
       else
-        flash[:error] =  t("gift_card_messages.register_error")
+        flash[:error] =  t("spree_gift_card.messages.register_error")
       end
     else
       session[:gift_card] = @gift_card.token
-      flash[:notice] = t("gift_card_messages.authorization_required")
+      flash[:notice] = t("spree_gift_card.messages.authorization_required")
     end
     redirect_to root_url
   end

@@ -1,28 +1,29 @@
 <h1><%= t(:gift_cards) %></h1>
+<h3><%= t('spree_gift_card.instructions')%></h3>
 <div>
 	<div style="float: left;">
 		<%= render "shared/error_messages", :target => @gift_card %>
 		<%= form_for @gift_card do |f| %>
 		  <p>
-		    <%= f.label :variant_id, t("amount") %> <span class="required">*</span><br />
+		    <%= f.label :variant_id, t("spree_gift_card.amount") %> <span class="required">*</span><br />
 		    <% @gift_card_variants.each do |card| %>
 		      <%= f.radio_button :variant_id, card.id %><%= number_to_currency(card.price) %>
 		    <% end %>
 		  </p>
 		  <%= f.field_container :sender_name do %>
-		    <%= f.label :sender_name, t("sender_name") %> <span class="required">*</span><br />
+		    <%= f.label :sender_name, t("spree_gift_card.sender_name") %> <span class="required">*</span><br />
 		    <%= f.text_field :sender_name %>
 		  <% end %>
 		  <%= f.field_container :email do %>
-		    <%= f.label :email, t("recipient_email") %> <span class="required">*</span><br />
+		    <%= f.label :email, t("spree_gift_card.recipient_email") %> <span class="required">*</span><br />
 		    <%= f.text_field :email %>
 		  <% end %>
 		  <%= f.field_container :name do %>
-		    <%= f.label :name, t("recipient_name") %> <span class="required">*</span><br />
+		    <%= f.label :name, t("spree_gift_card.recipient_name") %> <span class="required">*</span><br />
 		    <%= f.text_field :name %>
 		  <% end %>
 		  <%= f.field_container :note do %>
-		    <%= f.label :note, t("recipient_note") %><br />
+		    <%= f.label :note, t("spree_gift_card.recipient_note") %><br />
 		    <%= f.text_area :note, :rows => 10 %>
 		  <% end %> 
 		  <button type='submit' class='large primary'>

@@ -3,7 +3,7 @@ class SpreeGiftCardsHooks < Spree::ThemeSupport::HookListener
   
   insert_after :sidebar do
     %(
-    <%= link_to t("buy_gift_card"), new_gift_card_path, :class => 'button' %>
+    <%= link_to t("spree_gift_card.buy_gift_card"), new_gift_card_path, :class => 'button' %>
     )
   end
   

@@ -1,25 +1,30 @@
 <% @gcs = GiftCard.users_cards(@user.id) %>
 <% if @gcs.present? %>
-<h2><%= t("gift_cards") %></h2>
-
+<div>
+	<div style="float: left;"><h2><%= t("spree_gift_card.gift_cards") %></h2></div>
+	<div style="float: right;"><strong>Total Available:</strong> <%= number_to_currency GiftCard.remaining_credit(@user.id)%></div>
+	<div style="clear: both;"></div>
+</div>
 <table class="order-summary" width="545">
   <thead>
     <tr>
-      <th><%= t("gift_card") %></th>
-      <th><%= t("email") %></th>
-      <th><%= t("recipient_name") %></th>
-      <th><%= t("note") %></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
   <% @gcs.each do |card| %>
-    <tr class="<%= cycle('even', 'odd') %>">
-      <td><%= t(:gift_card)%> <%= number_to_currency(card.price) %></td>
-      <td><%= card.email %></td>
-      <td><%= card.name %></td>
-      <td><%= truncate(card.note, :length => 50, :omission => "...") %></td>
-      <td><%= card.is_received ? t('already_received') : link_to(t(:edit), edit_gift_card_url(card)) %></td>
+    <tr class="<%= cycle('odd', 'even', :name => 'gift_cards') %>">
+      <td><%= card.sender_id == current_user.id ? t("spree_gift_card.sender_text") : t("spree_gift_card.recipient_text")%>
+      <span style="font-weight: bold; font-style: italic"><%= number_to_currency(card.price) %></span> <%= t(:gift_card)%>
+      <%= card.sender_id == current_user.id ? t("spree_gift_card.sender") : t("spree_gift_card.recipient")%> <span style="font-weight: bold; font-style: italic"><%= card.name %> (<%= card.email %>)</span>
+      with message <span style="font-weight: bold; font-style: italic"><%= truncate(card.note, :length => 50, :omission => "...") %></span>
+      <% if card.sender_id == current_user.id %>
+      	<% if card.is_received %>
+      		<%= t('spree_gift_card.already_received') %>
+      	<% else %>
+      		<%= t('spree_gift_card.not_recieved')%> <%= link_to(t('spree_gift_card.resend'), edit_gift_card_url(card)) %>
+      	<% end %>
+      <% end %></td>
     </tr>
   <% end %>
   </tbody>

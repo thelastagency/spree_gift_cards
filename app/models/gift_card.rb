@@ -20,7 +20,7 @@ class GiftCard < ActiveRecord::Base
   end
 
   def price
-    (self.line_item ? self.line_item.price * self.line_item.quantity : self.variant.price) || 0.0
+    self.line_item || self.variant ? (self.line_item ? self.line_item.price * self.line_item.quantity : self.variant.price) : 0.0
   end
 
   def register(user)

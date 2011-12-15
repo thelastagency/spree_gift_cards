@@ -65,7 +65,7 @@ class GiftCardsController < Spree::BaseController
   end
   
   def confirm
-    @gift_card = GiftCard.find(params[:gift_card_id])
+    @gift_card = GiftCard.find_by_token(params[:id])
   end
 
   private

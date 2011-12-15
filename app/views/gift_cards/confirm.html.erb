@@ -1,0 +1,3 @@
+Hello <%= @gift_card.name %>,
+
+Click on this <%= (link_to 'link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url])) || 'link'%>, to activate your store credit.

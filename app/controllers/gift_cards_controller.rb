@@ -65,6 +65,11 @@ class GiftCardsController < Spree::BaseController
     @gift_card = GiftCard.new(:email => params[:email], :name => params[:name], :sender_name => params[:sender_name], :variant_id => params[:variant_id])
     
   end
+  
+  def confirm
+    @gift_card = GiftCard.find_by_token(params[:id])
+    
+  end
 
   private
 

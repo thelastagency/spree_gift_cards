@@ -1,4 +1,4 @@
 Hi <%= @gift_card.name %>! <br/>
 <br/>
-This store credit will be added to <strong> <%= @gift_card.name %>'s account </strong><br/><br/>
-If you are sure you want to do this then click on this <%= (link_to 'link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url])) || 'link' %>, to activate the store credit. 
+This gift card will be added to <strong> <%= [current_user.fname || "", " ", current_user.lname || ""].join %>(<%= current_user.email%>)'s account </strong><br/><br/>
+If you are sure you want to do this then click on this <%= (link_to 'link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url])) || 'link' %>, to activate the gift card. 

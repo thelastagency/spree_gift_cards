@@ -8,6 +8,7 @@ en:
     gift_cards: "Gift cards"
     is_gift_card: "is gift card"
     recipient_name: "Recipient's name"
+    cc_me: "Send a copy of the email to me"
     recipient_email: "Recipient's Email"
     recipient_note: "Note to Recipient"
     recipient_text: "I received a"

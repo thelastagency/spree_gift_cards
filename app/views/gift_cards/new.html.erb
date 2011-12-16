@@ -22,10 +22,10 @@
 		    <%= f.label :name, t("spree_gift_card.recipient_name") %> <span class="required">*</span><br />
 		    <%= f.text_field :name %>
 		  <% end %>
-		  <p>
-		  	<%= check_box_tag "gift_card[cc_me]", true, @gift_card.cc_me %>
+		  <%= f.field_container :cc_me do %>
+		  	<%= f.check_box :cc_me %>
 			<%= f.label :cc_me, t("spree_gift_card.cc_me") %>
-		  </p>
+		  <% end %>
 		  <%= f.field_container :note do %>
 		    <%= f.label :note, t("spree_gift_card.recipient_note") %><br />
 		    <%= f.text_area :note, :rows => 10 %>

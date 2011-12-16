@@ -23,7 +23,6 @@
 		    <%= f.text_field :name %>
 		  <% end %>
 		  <p>
-		  	<%= f.check_box :cc_me %>
 		  	<%= check_box_tag "gift_card[cc_me]", 1, @gift_card.cc_me %>
 			<%= f.label :cc_me, t("spree_gift_card.cc_me") %>
 		  </p>

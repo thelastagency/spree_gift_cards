@@ -13,7 +13,7 @@ class GiftCard < ActiveRecord::Base
 
   attr_accessible :name, :email, :sender_name, :note, :variant_id, :delivery_method, :cc_me
 
-  scope :users_cards, lambda{|user_id| where("sender_id = ? OR recipient_id = ? AND sent_at IS NOT NULL", user_id, user_id).order('created_at desc')  }
+  scope :users_cards, lambda{|user_id| where("(sender_id = ? OR recipient_id = ?) AND sent_at IS NOT NULL", user_id, user_id).order('created_at desc')  }
   
   def self.remaining_credit(user_id)
      joins(:store_credit).where("recipient_id = ?", user_id).sum(:remaining_amount)

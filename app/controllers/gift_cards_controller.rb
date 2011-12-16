@@ -4,6 +4,7 @@ class GiftCardsController < Spree::BaseController
     find_gift_card_variants
     @gift_card = GiftCard.new
     @gift_card.sender_name = [current_user.fname || "", " ", current_user.lname || ""].join
+    @gift_card.cc_me = true
   end
 
   def create

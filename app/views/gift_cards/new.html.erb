@@ -23,7 +23,7 @@
 		    <%= f.text_field :name %>
 		  <% end %>
 		  <%= f.field_container :cc_me do %>
-		  	<%= f.check_box :cc_me, {checked: true} %>
+		  	<%= f.check_box :cc_me %>
 			<%= f.label :cc_me, t("spree_gift_card.cc_me") %>
 		  <% end %>
 		  <%= f.field_container :note do %>

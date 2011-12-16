@@ -67,6 +67,18 @@ class GiftCardsController < Spree::BaseController
   
   def confirm
     @gift_card = GiftCard.find_by_token(params[:id])
+    if @gift_card.is_received
+      flash[:error] = t("gift_card_messages.cant_activate")
+      redirect_to root_url
+      return
+    end
+    
+    if !current_user || current_user.anonymous?
+      session[:gift_card] = @gift_card.token
+      flash[:notice] = t("spree_gift_card.messages.authorization_required")
+      redirect_to root_url
+    end
+
   end
 
   private

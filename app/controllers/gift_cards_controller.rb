@@ -77,8 +77,10 @@ class GiftCardsController < Spree::BaseController
       session[:gift_card] = @gift_card.token
       flash[:notice] = t("spree_gift_card.messages.authorization_required")
       redirect_to root_url
+    else 
+       session[:gift_card] = nil
     end
-
+    
   end
 
   private

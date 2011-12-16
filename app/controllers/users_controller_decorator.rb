@@ -6,5 +6,6 @@ UsersController.class_eval do
   def register_gift_card
     return if session[:gift_card].nil?
     redirect_to confirm_gift_card_url(session[:gift_card], :host => Spree::Config[:site_url])
+    return
   end
 end

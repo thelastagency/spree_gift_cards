@@ -1,4 +1,5 @@
 en:
+  you_have_store_credit: "You have %{amount} of gift/store credits"
   spree_gift_card:
     already_received: "and it was redeemed by the recipient."
     not_recieved: "and it has not been redeemed."

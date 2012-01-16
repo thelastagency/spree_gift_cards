@@ -1,4 +1,4 @@
 A gift certificate for <%= @gift_card.name %> in the amount of <%= number_to_currency @gift_card.price %>! <br/>
 <br/>
-This gift certificate will be added to <strong> <%= [current_user.fname || "", " ", current_user.lname || ""].join %>(<%= current_user.email%>)'s account </strong><br/><br/>
-If you are sure you want to do this then click on this <%= (link_to 'link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url])) || 'link' %>, to activate the gift certificate. 
+This gift certificate will be added to <strong> <%= [current_user.fname || "", " ", current_user.lname || ""].join %>(<%= {current_user.email}()%>)'s account </strong><br/><br/>
+If you are sure you want to do this then click on this <%= (link_to 'link', activate_gift_card_url(@gift_card.token, :host => Spree::Config[:site_url]), :confirm => ['Are you sure you want to add the gift card in the amount of', number_to_currency @gift_card.price, 'to', ([current_user.fname || "", " ", current_user.lname || ""].join), '(', current_user.email, ')\'s account').join || 'link' %>, to activate the gift certificate. 

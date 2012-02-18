@@ -1,4 +1,4 @@
-Order.class_eval do
+Spree::Order.class_eval do
   # Finalizes an in progress order after checkout is complete.
   # Called after transition to complete state when payments will have been processed
   def finalize_with_gift_card!

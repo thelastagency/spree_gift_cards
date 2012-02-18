@@ -1,4 +1,4 @@
-class GiftCard < ActiveRecord::Base
+class Spree::GiftCard < ActiveRecord::Base
   belongs_to :variant
   belongs_to :line_item
   belongs_to :sender, :class_name => "User"

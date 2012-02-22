@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_gift_cards'
-  s.version     = '0.60.0'
+  s.version     = '1.0.0'
   s.summary     = 'Add gem summary here'
   #s.description = 'Add (optional) gem description here'
   s.required_ruby_version = '>= 1.8.7'
@@ -17,7 +17,12 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = true
 
-  s.add_dependency('spree_core', '>= 0.60')
-  s.add_dependency('spree_auth', '>= 0.60')
-  s.add_dependency('spree_store_credits', '>= 0.60')
+  s.add_dependency('spree_core', '>= 1.0.0')
+  s.add_dependency('spree_auth', '>= 1.0.0')
+  s.add_dependency('spree_store_credits', '>= 1.0.0')
+
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "guard-rspec"
+  s.add_development_dependency "guard-spork"
 end
